@@ -1,0 +1,33 @@
+name: Build and Release DumpSMBIOS
+
+on:
+  push:
+    tags:
+      - 'v*'   # 仅推送以v开头的tag时触发
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Build DumpSMBIOS
+      run: msbuild DumpSMBIOS\DumpSMBIOS.vcxproj /p:Configuration=Release /p:Platform=x64
+
+    - name: Upload DumpSMBIOS artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: DumpSMBIOS
+        path: DumpSMBIOS/Release/DumpSMBIOS.exe
+
+    - name: Create Release and Upload Assets
+      uses: softprops/action-gh-release@v2
+      with:
+        files: DumpSMBIOS/Release/DumpSMBIOS.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
