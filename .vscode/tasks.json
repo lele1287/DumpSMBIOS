@@ -1,0 +1,75 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build DumpSMBIOS.sln (MSBuild)",
+			"type": "shell",
+			"command": "msbuild DumpSMBIOS.sln /p:Configuration=Release",
+			"args": [],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build DumpSMBIOS.sln (MSBuild)",
+			"type": "shell",
+			"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe\" DumpSMBIOS.sln /p:Configuration=Release",
+			"args": [],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build DumpSMBIOS.sln (auto MSBuild)",
+			"type": "shell",
+			"command": "msbuild DumpSMBIOS.sln",
+			"args": [],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build DumpSMBIOS.vcxproj (MSBuild)",
+			"type": "shell",
+			"command": "msbuild DumpSMBIOS\\DumpSMBIOS.vcxproj /p:Configuration=Release",
+			"args": [],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build DumpSMBIOS.vcxproj (auto MSBuild)",
+			"type": "shell",
+			"command": "msbuild DumpSMBIOS\\DumpSMBIOS.vcxproj",
+			"args": [],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build DumpSMBIOS-Mem.vcxproj (MSBuild)",
+			"type": "shell",
+			"command": "msbuild LegacyMethod\\DumpSMBIOS-Mem.vcxproj /p:Configuration=Release",
+			"args": [],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build DumpSMBIOS-Mem.vcxproj (auto MSBuild)",
+			"type": "shell",
+			"command": "msbuild LegacyMethod\\DumpSMBIOS-Mem.vcxproj",
+			"args": [],
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		}
+	]
+}

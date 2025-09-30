@@ -1,0 +1,17 @@
+name: Build DumpSMBIOS
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+      - name: Build DumpSMBIOS
+        run: msbuild DumpSMBIOS.sln /p:Configuration=Release
