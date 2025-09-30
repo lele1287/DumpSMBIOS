@@ -15,3 +15,26 @@ jobs:
         uses: microsoft/setup-msbuild@v2
       - name: Build DumpSMBIOS
         run: msbuild DumpSMBIOS.sln /p:Configuration=Release
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: DumpSMBIOS-artifacts
+          path: |
+            DumpSMBIOS/Release/*.exe
+            DumpSMBIOS/Release/*.dll
+            LegacyMethod/Release/*.exe
+            LegacyMethod/Release/*.dll
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        with:
+          tag_name: auto-latest
+          name: Auto Release (latest)
+          draft: true
+          files: |
+            DumpSMBIOS/Release/*.exe
+            DumpSMBIOS/Release/*.dll
+            LegacyMethod/Release/*.exe
+            LegacyMethod/Release/*.dll
